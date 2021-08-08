@@ -25,10 +25,13 @@ Download the .exe file from the Github releases and run
 
 
 ## More Info
-This program was developed with .NET 6 preview.   As such any current releases will have the .NET sdk included in the executable to help mitigate any additional downloading of the framework.  This framework was chosen to help create future releases that would be compatible with OSX and/or linux in the future.
+This program was developed with Visual Studio 2022 Preview with the targeted SDK is .NET 6 preview. 
+  
+Published releases will have the .NET sdk included in the executable to help mitigate any additional downloading of the framework. 
+.NET 6 was chosen to help create future releases that would be compatible with OSX and/or linux in the future.
 
 ## Donate
-If you like the efforts and sotware help buy me a coffee!
+If you like the efforts and sotware help buy me a coffee or beer!
 
 `S-TGS2-BU2Q-DBFR-DNATE`
 
