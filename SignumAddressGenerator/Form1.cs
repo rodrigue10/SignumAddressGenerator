@@ -30,7 +30,6 @@ namespace SignumAddressGenerator
         private object LockObj = new object();
         private long counter;
         private long lastval;
-        private readonly Random mainRand = new Random();
         private string? SRS_Node = "";
 
 
@@ -68,7 +67,6 @@ namespace SignumAddressGenerator
                 for (var x = 1; x <= (int)nrThreads.Value; x++)
                 {
                     trda = new Thread(VanityGeneration);
-                    // trda.Priority = ThreadPriority.BelowNormal
                     trda.IsBackground = true;
                     trda.Start();
                 }
@@ -101,8 +99,6 @@ namespace SignumAddressGenerator
             byte[] PublicKey;
             byte[] PublicKeyHash;
             SHA256 cSHA256 = SHA256.Create();
-            Random rand = new Random(mainRand.Next());
-            Random rand2 = new Random(mainRand.Next());
             var toFindPattern = new Regex(AddressToFind);
             byte[] b;
             int x;
@@ -118,12 +114,13 @@ namespace SignumAddressGenerator
                 if (running == false)
                     break;
                 KeySeed.Clear();
-                charlength = rand2.Next(NrofCharsMin, NrofChars + 1);
+                charlength = RandomNumberGenerator.GetInt32(NrofCharsMin, NrofChars + 1);
+
                 if (wordsUsecheck == true)
                 {
                     for (x = 1; x <= charlength; x++)
                     {
-                        KeySeed.Append(words[rand.Next(TotalWords)]);
+                        KeySeed.Append(words[RandomNumberGenerator.GetInt32(TotalWords)]);
                         KeySeed.Append(' ');
                     }
 
@@ -131,7 +128,7 @@ namespace SignumAddressGenerator
                 }
                 else
                     for (x = 1; x <= charlength; x++)
-                        KeySeed.Append(chars[rand.Next(TotalChars)]);
+                         KeySeed.Append(chars[RandomNumberGenerator.GetInt32(TotalChars)]);
 
 
 
@@ -438,7 +435,6 @@ namespace SignumAddressGenerator
 
                 MessageBox.Show("Account information is saved", "File Saved", MessageBoxButtons.OK);
 
-               // Interaction.MsgBox("Account information is saved", MsgBoxStyle.Information | MsgBoxStyle.OkOnly, "File saved");
             }
         }
 
