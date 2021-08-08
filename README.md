@@ -12,7 +12,7 @@ The limitations on this will be time and whether the character/word set length w
 ### Key features:
 - Multithreaded search  (Select number of CPU threads to use)
 - Multi-length word/char length.  (Helps increase entropy for more complex finds)
-- Create a string of random characters or phrase using words for the output passphrase.
+- Create a string of random characters or phrase using words for the output passphrase. (Updated to be Cryptographically secure random sequences)
 - Program will need a valid SRS node to make sure any address found is not already in use (currently listed major sponsored Signum Nodes)
 
 
