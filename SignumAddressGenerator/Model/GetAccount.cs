@@ -23,10 +23,10 @@ namespace SignumAddressGenerator
         #region API Properties
 
          [JsonPropertyName("account")]
-        public string Account { get; set; }
+        public string? Account { get; set; }
 
         [JsonPropertyName("accountRS")]
-        public string AccountRS { get; set; }
+        public string? AccountRS { get; set; }
 
         #endregion
 
@@ -36,7 +36,7 @@ namespace SignumAddressGenerator
         public int ErrorCode { get; set; }
 
         [JsonPropertyName("errorDescription")]
-        public string ErrorDescription { get; set; }
+        public string? ErrorDescription { get; set; }
         #endregion
 
 

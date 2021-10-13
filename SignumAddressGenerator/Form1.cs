@@ -27,7 +27,7 @@ namespace SignumAddressGenerator
         private int NrofChars;
         private int NrofCharsMin;
         private long Tested;
-        private object LockObj = new object();
+        private object LockObj = new();
         private long counter;
         private long lastval;
         private string? SRS_Node = "";
@@ -38,7 +38,7 @@ namespace SignumAddressGenerator
             InitializeComponent();
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void BtnStart_Click(object sender, EventArgs e)
         {
             if (btnStart.Text == "Start")
             {
@@ -66,8 +66,10 @@ namespace SignumAddressGenerator
                 running = true;
                 for (var x = 1; x <= (int)nrThreads.Value; x++)
                 {
-                    trda = new Thread(VanityGeneration);
-                    trda.IsBackground = true;
+                    trda = new Thread(VanityGeneration)
+                    {
+                        IsBackground = true
+                    };
                     trda.Start();
                 }
                 //trda = null/* TODO Change to default(_) if this is not a reference type */;
@@ -94,7 +96,7 @@ namespace SignumAddressGenerator
         {
             string AccountAddress;
             string AccountID;
-            StringBuilder KeySeed = new StringBuilder(NrofChars);
+            StringBuilder KeySeed = new(NrofChars);
             byte[] PrivateKey;
             byte[] PublicKey;
             byte[] PublicKeyHash;
@@ -138,7 +140,7 @@ namespace SignumAddressGenerator
                 PublicKeyHash = cSHA256.ComputeHash(PublicKey); 
 
                 b = new byte[] { PublicKeyHash[0], PublicKeyHash[1], PublicKeyHash[2], PublicKeyHash[3], PublicKeyHash[4], PublicKeyHash[5], PublicKeyHash[6], PublicKeyHash[7] };
-                if ((b[b.Length - 1] & 0x80) != 0)
+                if ((b[^1] & 0x80) != 0)
                     Array.Resize<byte>(ref b, b.Length + 1);
 
                     var accountLong = Convert.ToUInt64(new BigInteger(b, true, false).ToString());
@@ -181,8 +183,8 @@ namespace SignumAddressGenerator
 
             if (InvokeRequired)
             {
-                DError d = new DError(Error);
-                Invoke(d, new object[] { });
+                DError d = new(Error);
+                Invoke(d, Array.Empty<object>());
                 return;
             }
 
@@ -214,10 +216,10 @@ namespace SignumAddressGenerator
             IGetAccount getAccount;
 
             // ... Use HttpClient.
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new())
             {
                 //client.BaseAddress = new Uri("http://216.222.169.198:8125");
-                client.BaseAddress = new Uri(SRS_Node);
+                client.BaseAddress = new Uri(uriString: SRS_Node);
                 client.DefaultRequestHeaders.Accept.Add(
                              new MediaTypeWithQualityHeaderValue("application/json"));
                 var requesturl = "burst?requestType=getAccount&account=" + ID;
@@ -227,7 +229,7 @@ namespace SignumAddressGenerator
                {
                     using (HttpResponseMessage response =  client.GetAsync(requesturl).Result)
                     {
-                        using (HttpContent content = response.Content)
+                        using (HttpContent content = response.Content)    
                         {
                             getAccount = content.ReadFromJsonAsync<GetAccount>().Result;
 
@@ -280,11 +282,11 @@ namespace SignumAddressGenerator
         }
 
         #region Text Field Change Events
-        private void txtFind1_TextChanged(object sender, EventArgs e)
+        private void TxtFind1_TextChanged(object sender, EventArgs e)
         {
             int Index = txtFind1.SelectionStart;
             string result = txtFind1.Text;
-            txtFind1.Text = sanitizeTxt(result, 4);
+            txtFind1.Text = SanitizeTxt(result, 4);
             txtFind1.Select(Index, 0);
             if (Index == 4)
             {
@@ -293,11 +295,11 @@ namespace SignumAddressGenerator
             }
         }
 
-        private void txtFind2_TextChanged(object sender, EventArgs e)
+        private void TxtFind2_TextChanged(object sender, EventArgs e)
         {
             int Index = txtFind2.SelectionStart;
             string result = txtFind2.Text;
-            txtFind2.Text = sanitizeTxt(result, 4);
+            txtFind2.Text = SanitizeTxt(result, 4);
             txtFind2.Select(Index, 0);
             if (Index == 4)
             {
@@ -306,11 +308,11 @@ namespace SignumAddressGenerator
             }
         }
 
-        private void txtFind3_TextChanged(object sender, EventArgs e)
+        private void TxtFind3_TextChanged(object sender, EventArgs e)
         {
             int Index = txtFind3.SelectionStart;
             string result = txtFind3.Text;
-            txtFind3.Text = sanitizeTxt(result, 4);
+            txtFind3.Text = SanitizeTxt(result, 4);
             txtFind3.Select(Index, 0);
             if (Index == 4)
             {
@@ -319,18 +321,18 @@ namespace SignumAddressGenerator
             }
         }
 
-        private void txtFind4_TextChanged(object sender, EventArgs e)
+        private void TxtFind4_TextChanged(object sender, EventArgs e)
         {
             int Index = txtFind4.SelectionStart;
             string result = txtFind4.Text;
-            txtFind4.Text = sanitizeTxt(result, 5);
+            txtFind4.Text = SanitizeTxt(result, 5);
             txtFind4.Select(Index, 0);
         }
         #endregion
 
         #region Text Field KeyDown Events
 
-        private void txtFind4_KeyDown(object sender, KeyEventArgs e)
+        private void TxtFind4_KeyDown(object sender, KeyEventArgs e)
         {
             if (txtFind4.SelectionStart == 0)
             {
@@ -339,7 +341,7 @@ namespace SignumAddressGenerator
             }
         }
 
-        private void txtFind3_KeyDown(object sender, KeyEventArgs e)
+        private void TxtFind3_KeyDown(object sender, KeyEventArgs e)
         {
             if (txtFind3.SelectionStart == 0)
             {
@@ -348,7 +350,7 @@ namespace SignumAddressGenerator
             }
         }
 
-        private void txtFind2_KeyDown(object sender, KeyEventArgs e)
+        private void TxtFind2_KeyDown(object sender, KeyEventArgs e)
         {
             if (txtFind2.SelectionStart == 0)
             {
@@ -360,7 +362,7 @@ namespace SignumAddressGenerator
 
         #endregion
 
-        private string sanitizeTxt(string result, int allowedLength)
+        private static string SanitizeTxt(string result, int allowedLength)
         {
             while (result.Length < allowedLength)
                 result += "@";
@@ -382,7 +384,7 @@ namespace SignumAddressGenerator
             return result;
         }
 
-        private void tmr_Tick(object sender, EventArgs e)
+        private void Tmr_Tick(object sender, EventArgs e)
         {
       
             lock (LockObj)
@@ -399,23 +401,25 @@ namespace SignumAddressGenerator
         }
 
 
-        private void nrPassMin_ValueChanged(object sender, EventArgs e)
+        private void NrPassMin_ValueChanged(object sender, EventArgs e)
         {
             if (nrPassMin.Value >= nrPass.Value)
                 nrPass.Value = nrPassMin.Value;
         }
-        private void nrPass_ValueChanged(object sender, EventArgs e)
+        private void NrPass_ValueChanged(object sender, EventArgs e)
         {
             if (nrPass.Value <= nrPassMin.Value)
                 nrPassMin.Value = nrPass.Value;
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Text Files (*.txt)|*.txt";
-            
+            SaveFileDialog sfd = new()
+            {
+                Filter = "Text Files (*.txt)|*.txt"
+            };
+
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -472,7 +476,7 @@ namespace SignumAddressGenerator
         {
             if (InvokeRequired)
             {
-                DFound d = new DFound(Found);
+                DFound d = new(Found);
                 Invoke(d, new object[] { Address, Pass, ID });
                 return;
             }
@@ -516,7 +520,7 @@ namespace SignumAddressGenerator
 
         }
 
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             GroupAll.Enabled = false;
             txtAddress.Clear();
@@ -553,9 +557,9 @@ namespace SignumAddressGenerator
 
 
             // ... Use HttpClient.
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new())
             {
-                client.BaseAddress = new Uri(SRS_Node);
+                client.BaseAddress = new Uri(uriString: SRS_Node);
                 client.DefaultRequestHeaders.Accept.Add(
                              new MediaTypeWithQualityHeaderValue("application/json"));
                 var requesturl = "burst?requestType=getBlockchainStatus";
