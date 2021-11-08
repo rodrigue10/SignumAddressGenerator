@@ -42,6 +42,8 @@ namespace SignumAddressGenerator
             this.Label7 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTimeElap = new System.Windows.Forms.Label();
+            this.lblElapsed = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.lblGenStatus = new System.Windows.Forms.Label();
             this.GroupAddress = new System.Windows.Forms.GroupBox();
@@ -54,6 +56,7 @@ namespace SignumAddressGenerator
             this.Label11 = new System.Windows.Forms.Label();
             this.txtFind3 = new System.Windows.Forms.TextBox();
             this.GroupOptions = new System.Windows.Forms.GroupBox();
+            this.textSeed = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -77,6 +80,7 @@ namespace SignumAddressGenerator
             this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.chkSeed = new System.Windows.Forms.CheckBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.GroupAddress.SuspendLayout();
@@ -114,7 +118,7 @@ namespace SignumAddressGenerator
             this.GroupBox2.Controls.Add(this.Label7);
             this.GroupBox2.Controls.Add(this.btnSave);
             this.GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.GroupBox2.Location = new System.Drawing.Point(6, 342);
+            this.GroupBox2.Location = new System.Drawing.Point(6, 403);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(570, 170);
             this.GroupBox2.TabIndex = 11;
@@ -188,6 +192,8 @@ namespace SignumAddressGenerator
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.lblTimeElap);
+            this.GroupBox1.Controls.Add(this.lblElapsed);
             this.GroupBox1.Controls.Add(this.label19);
             this.GroupBox1.Controls.Add(this.lblGenStatus);
             this.GroupBox1.Controls.Add(this.GroupAddress);
@@ -200,15 +206,35 @@ namespace SignumAddressGenerator
             this.GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.GroupBox1.Location = new System.Drawing.Point(0, 56);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(591, 280);
+            this.GroupBox1.Size = new System.Drawing.Size(591, 341);
             this.GroupBox1.TabIndex = 10;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Address Generation";
             // 
+            // lblTimeElap
+            // 
+            this.lblTimeElap.AutoSize = true;
+            this.lblTimeElap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTimeElap.Location = new System.Drawing.Point(337, 227);
+            this.lblTimeElap.Name = "lblTimeElap";
+            this.lblTimeElap.Size = new System.Drawing.Size(13, 15);
+            this.lblTimeElap.TabIndex = 31;
+            this.lblTimeElap.Text = "0";
+            // 
+            // lblElapsed
+            // 
+            this.lblElapsed.AutoSize = true;
+            this.lblElapsed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblElapsed.Location = new System.Drawing.Point(251, 227);
+            this.lblElapsed.Name = "lblElapsed";
+            this.lblElapsed.Size = new System.Drawing.Size(64, 15);
+            this.lblElapsed.TabIndex = 30;
+            this.lblElapsed.Text = "Total Time:";
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(77, 258);
+            this.label19.Location = new System.Drawing.Point(12, 312);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(114, 15);
             this.label19.TabIndex = 29;
@@ -218,7 +244,7 @@ namespace SignumAddressGenerator
             // 
             this.lblGenStatus.AutoSize = true;
             this.lblGenStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblGenStatus.Location = new System.Drawing.Point(197, 258);
+            this.lblGenStatus.Location = new System.Drawing.Point(132, 312);
             this.lblGenStatus.Name = "lblGenStatus";
             this.lblGenStatus.Size = new System.Drawing.Size(73, 15);
             this.lblGenStatus.TabIndex = 28;
@@ -319,6 +345,8 @@ namespace SignumAddressGenerator
             // 
             // GroupOptions
             // 
+            this.GroupOptions.Controls.Add(this.chkSeed);
+            this.GroupOptions.Controls.Add(this.textSeed);
             this.GroupOptions.Controls.Add(this.label17);
             this.GroupOptions.Controls.Add(this.Label2);
             this.GroupOptions.Controls.Add(this.label13);
@@ -331,10 +359,17 @@ namespace SignumAddressGenerator
             this.GroupOptions.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupOptions.Location = new System.Drawing.Point(6, 56);
             this.GroupOptions.Name = "GroupOptions";
-            this.GroupOptions.Size = new System.Drawing.Size(585, 132);
+            this.GroupOptions.Size = new System.Drawing.Size(585, 159);
             this.GroupOptions.TabIndex = 21;
             this.GroupOptions.TabStop = false;
             this.GroupOptions.Text = "Options";
+            // 
+            // textSeed
+            // 
+            this.textSeed.Location = new System.Drawing.Point(186, 132);
+            this.textSeed.Name = "textSeed";
+            this.textSeed.Size = new System.Drawing.Size(390, 23);
+            this.textSeed.TabIndex = 15;
             // 
             // label17
             // 
@@ -455,7 +490,7 @@ namespace SignumAddressGenerator
             // 
             this.lblTested.AutoSize = true;
             this.lblTested.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTested.Location = new System.Drawing.Point(312, 190);
+            this.lblTested.Location = new System.Drawing.Point(337, 252);
             this.lblTested.Name = "lblTested";
             this.lblTested.Size = new System.Drawing.Size(13, 15);
             this.lblTested.TabIndex = 20;
@@ -465,7 +500,7 @@ namespace SignumAddressGenerator
             // 
             this.lblTesting.AutoSize = true;
             this.lblTesting.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTesting.Location = new System.Drawing.Point(312, 222);
+            this.lblTesting.Location = new System.Drawing.Point(337, 284);
             this.lblTesting.Name = "lblTesting";
             this.lblTesting.Size = new System.Drawing.Size(61, 15);
             this.lblTesting.TabIndex = 19;
@@ -475,7 +510,7 @@ namespace SignumAddressGenerator
             // 
             this.Label6.AutoSize = true;
             this.Label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Label6.Location = new System.Drawing.Point(235, 222);
+            this.Label6.Location = new System.Drawing.Point(275, 284);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(47, 15);
             this.Label6.TabIndex = 7;
@@ -483,7 +518,7 @@ namespace SignumAddressGenerator
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 190);
+            this.btnStart.Location = new System.Drawing.Point(10, 252);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(216, 47);
             this.btnStart.TabIndex = 0;
@@ -495,7 +530,7 @@ namespace SignumAddressGenerator
             // 
             this.Label5.AutoSize = true;
             this.Label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Label5.Location = new System.Drawing.Point(235, 190);
+            this.Label5.Location = new System.Drawing.Point(251, 252);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(71, 15);
             this.Label5.TabIndex = 6;
@@ -530,7 +565,7 @@ namespace SignumAddressGenerator
             this.GroupAll.Controls.Add(this.Label9);
             this.GroupAll.Location = new System.Drawing.Point(12, 140);
             this.GroupAll.Name = "GroupAll";
-            this.GroupAll.Size = new System.Drawing.Size(591, 525);
+            this.GroupAll.Size = new System.Drawing.Size(591, 579);
             this.GroupAll.TabIndex = 25;
             this.GroupAll.TabStop = false;
             // 
@@ -587,7 +622,7 @@ namespace SignumAddressGenerator
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(62, 671);
+            this.label15.Location = new System.Drawing.Point(24, 722);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(154, 21);
             this.label15.TabIndex = 30;
@@ -609,11 +644,24 @@ namespace SignumAddressGenerator
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(240, 668);
+            this.label21.Location = new System.Drawing.Point(291, 722);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(262, 25);
             this.label21.TabIndex = 13;
             this.label21.Text = "S-TGS2-BU2Q-DBFR-DNATE";
+            // 
+            // chkSeed
+            // 
+            this.chkSeed.AutoSize = true;
+            this.chkSeed.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkSeed.Checked = true;
+            this.chkSeed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSeed.Location = new System.Drawing.Point(26, 134);
+            this.chkSeed.Name = "chkSeed";
+            this.chkSeed.Size = new System.Drawing.Size(144, 19);
+            this.chkSeed.TabIndex = 17;
+            this.chkSeed.Text = "Append Custom Seed:";
+            this.chkSeed.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -621,7 +669,7 @@ namespace SignumAddressGenerator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(623, 717);
+            this.ClientSize = new System.Drawing.Size(623, 763);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label15);
@@ -702,6 +750,10 @@ namespace SignumAddressGenerator
         internal System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textSeed;
+        internal System.Windows.Forms.Label lblTimeElap;
+        internal System.Windows.Forms.Label lblElapsed;
+        internal System.Windows.Forms.CheckBox chkSeed;
     }
 }
 
