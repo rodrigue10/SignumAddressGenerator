@@ -56,6 +56,7 @@ namespace SignumAddressGenerator
             this.Label11 = new System.Windows.Forms.Label();
             this.txtFind3 = new System.Windows.Forms.TextBox();
             this.GroupOptions = new System.Windows.Forms.GroupBox();
+            this.chkSeed = new System.Windows.Forms.CheckBox();
             this.textSeed = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@ namespace SignumAddressGenerator
             this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.chkSeed = new System.Windows.Forms.CheckBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.GroupAddress.SuspendLayout();
@@ -220,6 +220,7 @@ namespace SignumAddressGenerator
             this.lblTimeElap.Size = new System.Drawing.Size(13, 15);
             this.lblTimeElap.TabIndex = 31;
             this.lblTimeElap.Text = "0";
+            this.lblTimeElap.Visible = false;
             // 
             // lblElapsed
             // 
@@ -230,6 +231,7 @@ namespace SignumAddressGenerator
             this.lblElapsed.Size = new System.Drawing.Size(64, 15);
             this.lblElapsed.TabIndex = 30;
             this.lblElapsed.Text = "Total Time:";
+            this.lblElapsed.Visible = false;
             // 
             // label19
             // 
@@ -363,6 +365,17 @@ namespace SignumAddressGenerator
             this.GroupOptions.TabIndex = 21;
             this.GroupOptions.TabStop = false;
             this.GroupOptions.Text = "Options";
+            // 
+            // chkSeed
+            // 
+            this.chkSeed.AutoSize = true;
+            this.chkSeed.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkSeed.Location = new System.Drawing.Point(26, 134);
+            this.chkSeed.Name = "chkSeed";
+            this.chkSeed.Size = new System.Drawing.Size(144, 19);
+            this.chkSeed.TabIndex = 17;
+            this.chkSeed.Text = "Append Custom Seed:";
+            this.chkSeed.UseVisualStyleBackColor = true;
             // 
             // textSeed
             // 
@@ -649,19 +662,6 @@ namespace SignumAddressGenerator
             this.label21.Size = new System.Drawing.Size(262, 25);
             this.label21.TabIndex = 13;
             this.label21.Text = "S-TGS2-BU2Q-DBFR-DNATE";
-            // 
-            // chkSeed
-            // 
-            this.chkSeed.AutoSize = true;
-            this.chkSeed.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkSeed.Checked = true;
-            this.chkSeed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSeed.Location = new System.Drawing.Point(26, 134);
-            this.chkSeed.Name = "chkSeed";
-            this.chkSeed.Size = new System.Drawing.Size(144, 19);
-            this.chkSeed.TabIndex = 17;
-            this.chkSeed.Text = "Append Custom Seed:";
-            this.chkSeed.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
