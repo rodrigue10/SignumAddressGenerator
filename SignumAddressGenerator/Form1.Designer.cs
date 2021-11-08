@@ -81,6 +81,7 @@ namespace SignumAddressGenerator
             this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.GroupAddress.SuspendLayout();
@@ -633,11 +634,11 @@ namespace SignumAddressGenerator
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(24, 722);
+            this.label15.Location = new System.Drawing.Point(82, 722);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 21);
+            this.label15.Size = new System.Drawing.Size(182, 25);
             this.label15.TabIndex = 30;
             this.label15.Text = "Donation Address: ";
             // 
@@ -663,6 +664,16 @@ namespace SignumAddressGenerator
             this.label21.TabIndex = 13;
             this.label21.Text = "S-TGS2-BU2Q-DBFR-DNATE";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(280, 719);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(273, 33);
+            this.textBox1.TabIndex = 32;
+            this.textBox1.Text = "S-TGS2-BU2Q-DBFR-DNATE";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -670,6 +681,7 @@ namespace SignumAddressGenerator
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(623, 763);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label15);
@@ -754,6 +766,7 @@ namespace SignumAddressGenerator
         internal System.Windows.Forms.Label lblTimeElap;
         internal System.Windows.Forms.Label lblElapsed;
         internal System.Windows.Forms.CheckBox chkSeed;
+        internal System.Windows.Forms.TextBox textBox1;
     }
 }
 
