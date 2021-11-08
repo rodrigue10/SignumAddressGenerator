@@ -1,7 +1,8 @@
 # Signum Vanity Address Generator
 Vanity Address Generator for the Signum Blockchain Platform
 
-![image](https://user-images.githubusercontent.com/60077909/128460412-67968bb3-13d0-48f8-8959-dad7535eda46.png)
+![image](https://user-images.githubusercontent.com/60077909/140673226-63e490f3-7e16-4dc4-8dcf-cc5f907804b7.png)
+
 
 
 ## About
@@ -14,6 +15,7 @@ The limitations on this will be time and whether the character/word set length w
 - Multi-length word/char length.  (Helps increase entropy for more complex finds)
 - Create a string of random characters or phrase using words for the output passphrase. (Updated to be Cryptographically secure random sequences)
 - Program will need a valid SRS node to make sure any address found is not already in use (currently listed major sponsored Signum Nodes)
+- Append a Custom Seed phrase or character set
 
 
 # How it works
